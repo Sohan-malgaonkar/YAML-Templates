@@ -1,0 +1,22 @@
+Resources:
+  MyDBInstance:
+    Type: AWS::RDS::DBInstance
+    Properties:
+      DBInstanceClass: db.t3.medium
+      Engine: MySQL
+      MasterUsername: admin
+      MasterUserPassword: admin1234
+      MultiAZ: true
+      AllocatedStorage: 100
+      VPCSecurityGroups:
+        - !Ref DBSecurityGroup
+
+  DBSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow DB Access
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3306
+          ToPort: 3306
+          CidrIp: 0.0.0.0/0
