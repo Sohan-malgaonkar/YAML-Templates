@@ -1,0 +1,22 @@
+Resources:
+  MyLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: app.lambda_handler
+      Role: arn:aws:iam::123456789012:role/execution_role
+      Code:
+        S3Bucket: my-lambda-code-bucket
+        S3Key: lambda-code.zip
+      Runtime: python3.10
+
+  MyBucketEvent:
+    Type: AWS::S3::BucketNotification
+    Properties:
+      Bucket: !Ref MyTriggerBucket
+      NotificationConfiguration:
+        LambdaConfigurations:
+          - Event: s3:ObjectCreated:*
+            Function: !GetAtt MyLambda.Arn
+
+  MyTriggerBucket:
+    Type: AWS::S3::Bucket
