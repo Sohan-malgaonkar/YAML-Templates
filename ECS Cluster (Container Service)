@@ -1,0 +1,5 @@
+Resources:
+  MyECSCluster:
+    Type: AWS::ECS::Cluster
+    Properties:
+      ClusterName: MyDevOpsCluster
