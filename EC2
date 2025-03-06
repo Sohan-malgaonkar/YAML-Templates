@@ -3,5 +3,5 @@ Resources:
     Type: AWS::EC2::Instance
     Properties:
       ImageId: ami-0abcdef1234567890
-      InstanceType: t2.micro # this name can be different as with region!
+      InstanceType: t2.micro # this name can be different as with region!!
 
