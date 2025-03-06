@@ -1,0 +1,30 @@
+Resources:
+  MyLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: MyALB
+      Subnets: 
+        - subnet-12345678
+        - subnet-23456789
+      SecurityGroups: 
+        - sg-0123456789abcdef0
+      Scheme: internet-facing
+      Type: application
+
+  MyTargetGroup:
+    Type: AWS::ElasticLoadBalancingV2::TargetGroup
+    Properties:
+      VpcId: vpc-12345678
+      Protocol: HTTP
+      Port: 80
+      TargetType: instance
+
+  MyListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref MyLoadBalancer
+      Protocol: HTTP
+      Port: 80
+      DefaultActions:
+        - Type: forward
+          TargetGroupArn: !Ref MyTargetGroup
