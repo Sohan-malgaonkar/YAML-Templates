@@ -1,0 +1,12 @@
+Resources:
+  MyLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      Handler: index.handler
+      Role: arn:aws:iam::123456789012:role/execution_role
+      Code:
+        ZipFile: |
+          exports.handler = async (event) => {
+              return "Hello from Lambda!";
+          };
+      Runtime: nodejs18.x
