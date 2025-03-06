@@ -1,0 +1,12 @@
+Resources:
+  MySNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      DisplayName: "AlertsTopic"
+
+  MySubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Protocol: email
+      Endpoint: myemail@example.com
+      TopicArn: !Ref MySNSTopic
