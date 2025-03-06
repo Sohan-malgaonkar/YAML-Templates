@@ -1,0 +1,9 @@
+Resources:
+  MyDashboard:
+    Type: AWS::CloudWatch::Dashboard
+    Properties:
+      DashboardName: DevOpsDashboard
+      DashboardBody: |
+        {
+            "widgets": []
+        }
