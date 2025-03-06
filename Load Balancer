@@ -1,0 +1,12 @@
+Resources:
+  MyLoadBalancer:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: MyALB
+      Subnets:
+        - subnet-12345678
+        - subnet-23456789
+      SecurityGroups:
+        - sg-0123456789abcdef0
+      Scheme: internet-facing
+      Type: application
